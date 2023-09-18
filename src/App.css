@@ -7,35 +7,29 @@ canvas {
     right: 0%;
 }
 h2 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2.5em;
-    font-weight: 300;
-    text-align: left;
-    color: #ffffff;
     margin-top: 10%;
-    margin-bottom: 0%;
 }
-.Section1 {
+#Section1 {
     position: absolute;
     top: 30%;
     left: 15%;
     width: 70%;
-    height: 80%;
+    height: 10%;
     color: #ffffff;
 }
-.Section2 {
+#Section2 {
     position: absolute;
     top: 140%;
     left: 15%;
     width: 70%;
-    height: 80%;
-    color: #91a5ff;
+    height: 10%;
+    color: #bfc6ff;
 }
-.Section3 {
+#Section3 {
     position: absolute;
     top: 240%;
     left: 15%;
     width: 70%;
     height: 80%;
-    color: #ff9191;
+    color: #ffbfbf;
 }

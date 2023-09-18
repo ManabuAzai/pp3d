@@ -90,7 +90,7 @@ async function fetchCoordinates(filename: string): Promise<THREE.Vector3[]> {
 
 // 座標データから四面体を作成（InstancedMeshを使用）
 function createTetrahedraFromCoordinates(coords: THREE.Vector3[], material: THREE.Material): THREE.InstancedMesh {
-  const geometry = new THREE.TetrahedronGeometry(0.006);  // 球を四面体に変更
+  const geometry = new THREE.TetrahedronGeometry(0.008);  // 球を四面体に変更
   const instancedMesh = new THREE.InstancedMesh(geometry, material, coords.length);
 
   const dummy = new THREE.Object3D();
@@ -113,10 +113,10 @@ async function createPointCloud(scene: THREE.Scene): Promise<{ instancedMesh: TH
     fetchCoordinates('coordinates_brain.txt'),
     fetchCoordinates('coordinates_lightbulb.txt')
   ]);
-
-  const teapotColor = new THREE.Color(0xffffff); // white color for teapot
-  const brainColor = new THREE.Color(0x91a5ff);  // blue color for brain
-  const lightbulbColor = new THREE.Color(0xff9191); // red color for lightbulb
+  // 色を設定
+  const teapotColor = new THREE.Color(0xffffff);
+  const brainColor = new THREE.Color(0xbfc6ff);
+  const lightbulbColor = new THREE.Color(0xffbfbf);
 
   const material = new THREE.MeshBasicMaterial({ color: teapotColor }); 
   const instancedMesh = createTetrahedraFromCoordinates(teapotCoords, material);
@@ -140,7 +140,7 @@ function animateFromTo(instancedMesh: THREE.InstancedMesh, startName: string, co
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
 
-  const duration = 1200;
+  const duration = 900;
   const tick = (time: number) => {
     if (startTime === null) {
       startTime = time;
@@ -216,8 +216,6 @@ function App() {
         };
         if (instancedMesh) {
           animateFromTo(instancedMesh, animateEndName, coordMapping, colorMapping, type, renderer, scene, camera);
-  
-          // 0.01秒後に前のメッシュを削除
           setTimeout(() => {
             if (prevMesh) {
               scene.remove(prevMesh);
@@ -230,7 +228,7 @@ function App() {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          switch (entry.target.className) {
+          switch (entry.target.id) {
             case 'Section1':
               animateSection('teapot');
               break;
@@ -246,6 +244,7 @@ function App() {
         }
       });
     };
+    
 
     const options: IntersectionObserverInit = {
       root: null,
@@ -254,12 +253,12 @@ function App() {
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);
-    document.querySelectorAll('.Section1, .Section2, .Section3').forEach(section => {
+    document.querySelectorAll('#Section1, #Section2, #Section3').forEach(section => {
       observer.observe(section as Element);
     });
 
     return () => {
-      document.querySelectorAll('.Section1, .Section2, .Section3').forEach(section => {
+      document.querySelectorAll('#Section1, #Section2, #Section3').forEach(section => {
         observer.unobserve(section as Element);
       });
       if (currentMesh) {
@@ -271,15 +270,15 @@ function App() {
   return (
     <>
       <canvas id="canvas"></canvas>
-      <div className="Section1">
+      <div id="Section1">
         <h2>Section1</h2>
         <p>point cloud</p>
       </div>
-      <div className="Section2">
+      <div id="Section2">
         <h2>Section2</h2>
         <p>point cloud</p>
       </div>
-      <div className="Section3">
+      <div id="Section3">
         <h2>Section3</h2>
         <p>point cloud</p>
       </div>
