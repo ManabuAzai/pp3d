@@ -8,28 +8,32 @@ canvas {
 }
 h2 {
     margin-top: 10%;
+    font-size: 2em;
 }
 #Section1 {
     position: absolute;
     top: 30%;
-    left: 15%;
-    width: 70%;
+    left: 10%;
+    width: 40%;
     height: 10%;
     color: #ffffff;
+    font-size: 1em;
 }
 #Section2 {
     position: absolute;
-    top: 140%;
-    left: 15%;
-    width: 70%;
+    top: 170%;
+    left: 10%;
+    width: 40%;
     height: 10%;
-    color: #bfc6ff;
+    color: #ffffff;
+    font-size: 1em;
 }
 #Section3 {
     position: absolute;
-    top: 240%;
-    left: 15%;
-    width: 70%;
+    top: 310%;
+    left: 10%;
+    width: 40%;
     height: 80%;
-    color: #ffbfbf;
+    color: #ffffff;
+    font-size: 1em;
 }

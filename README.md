@@ -1,2 +1,2 @@
 # React + TypeScript + Vite
-# pp3d Website
+# PixPot 3d Website
