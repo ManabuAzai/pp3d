@@ -4,10 +4,13 @@ Setting up and Running the Project
 ----------------------------------
 Clone the repository:
 ```git clone https://github.com/ManabuAzai/pp3d.git```
+
 Navigate to the cloned directory:
 ```cd pp3d```
+
 Install the required dependencies:
 ```npm install```
+
 Run the development server:
 ```npm run dev```
 
