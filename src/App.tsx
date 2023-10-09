@@ -107,6 +107,9 @@ async function createPointCloud(scene: THREE.Scene): Promise<{ instancedMesh: TH
   const [FirstCoords, SecondCoords, ThirdCoords, randomCoords] = await Promise.all([
     // fetchCoordinates('coordinates_teapot.txt'),
     // fetchCoordinates('coordinates_earth.txt'),
+    // fetchCoordinates('coordinates_sukkirin.txt'),
+    // fetchCoordinates('bird1.txt'),
+    // fetchCoordinates('bird3.txt'),
     fetchCoordinates('coordinates_box.txt'),
     fetchCoordinates('coordinates_brain.txt'),
     fetchCoordinates('coordinates_lightbulb.txt'),
